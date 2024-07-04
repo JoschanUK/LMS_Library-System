@@ -1,6 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.views import generic
+from .models import booklist
 
 # Create your views here.
-def index(request):
-    return HttpResponse("Hello, LMS !")
+class PostList(generic.ListView):
+    queryset = booklist.objects.all()
+    template_name = "booklist.html"
